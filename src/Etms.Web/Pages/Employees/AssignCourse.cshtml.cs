@@ -1,5 +1,6 @@
 using Etms.Data;
 using Etms.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Etms.Web.Pages.Employees;
 
+// Course assignment is Admin-only (human decision, 2026-09-19).
+[Authorize(Roles = "Admin")]
 public class AssignCourseModel : PageModel
 {
     private readonly EtmsDbContext _db;

@@ -1,33 +1,32 @@
-using Etms.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Etms.Tests;
 
-// In-process test host: swaps the real SQL Server DbContext for EF Core InMemory
-// and skips the relational-only startup migration (see Program.cs SkipMigrationOnStartup).
+// In-process test host: switches Program.cs to EF Core InMemory via environment
+// variables (see UseInMemoryDatabaseForTests) instead of registering AddDbContext a
+// second time, which would leave both the SqlServer and InMemory providers
+// registered. Environment variables are used rather than ConfigureAppConfiguration
+// because Program.cs reads configuration to pick a provider *before* WebApplicationFactory's
+// deferred ConfigureAppConfiguration callbacks are applied — env vars are visible as
+// soon as WebApplication.CreateBuilder(args) runs.
 public class EtmsWebApplicationFactory : WebApplicationFactory<Program>
 {
+    // EF Core's InMemory provider keys databases by name in a process-wide store, so
+    // this must be unique per factory instance to keep test classes isolated from
+    // each other (xUnit creates one factory instance per IClassFixture-using class).
+    private readonly string _databaseName = $"etms-tests-{Guid.NewGuid()}";
+
+    public EtmsWebApplicationFactory()
+    {
+        Environment.SetEnvironmentVariable("UseInMemoryDatabaseForTests", "true");
+        Environment.SetEnvironmentVariable("InMemoryDatabaseName", _databaseName);
+        Environment.SetEnvironmentVariable("ConnectionStrings__Etms", "Server=unused;Database=unused");
+    }
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        builder.ConfigureAppConfiguration((_, config) =>
-        {
-            config.AddInMemoryCollection(new Dictionary<string, string?>
-            {
-                ["ConnectionStrings:Etms"] = "Server=unused;Database=unused",
-                ["SkipMigrationOnStartup"] = "true",
-            });
-        });
-
-        builder.ConfigureServices(services =>
-        {
-            services.RemoveAll<DbContextOptions<EtmsDbContext>>();
-            services.AddDbContext<EtmsDbContext>(options =>
-                options.UseInMemoryDatabase($"etms-tests-{Guid.NewGuid()}"));
-        });
     }
 }
+
+

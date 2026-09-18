@@ -1,11 +1,14 @@
 using Etms.Data;
 using Etms.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace Etms.Web.Pages.Employees;
 
+// Employee create/edit is Admin-only (human decision, 2026-09-19).
+[Authorize(Roles = "Admin")]
 public class EditModel : PageModel
 {
     private readonly EtmsDbContext _db;

@@ -1,10 +1,15 @@
 using Etms.Data;
 using Etms.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Etms.Web.Pages.Courses;
 
+// Course create/edit is Admin-only (human decision, 2026-09-19) — the legacy app had
+// no such restriction, but self-registration is now invite-only and admin actions
+// need to be reserved for the Admin role to match.
+[Authorize(Roles = "Admin")]
 public class EditModel : PageModel
 {
     private readonly EtmsDbContext _db;

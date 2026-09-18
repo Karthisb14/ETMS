@@ -51,29 +51,24 @@ rollback plan (KAN-11 / KAN-10 acceptance criterion 5).
 
 ## Open items (tracked in Jira, not silently decided here)
 
-- Self-registration via `AddDefaultIdentity` is enabled; whether account
-  creation should instead be admin-provisioned/invite-only is a compliance
-  hardening decision for KAN-12.
-- Role-based least privilege is scaffolded (an "Admin" role is seeded at
-  startup) but **not enforced** on any page yet — the legacy app had no
-  role distinction either, and deciding who should hold "Admin" vs a
-  regular account is a policy call for the human Engineering Lead/PO, not
-  this agent.
-- Audit logging (`Middleware/AuditLoggingExtensions.cs`) now persists to
-  the `AuditLogEntry` table (durable, queryable) instead of just log
-  output.
-- TLS: this app enables `UseHttpsRedirection`/`UseHsts` and trusts
-  `X-Forwarded-*` headers from a reverse proxy (`ForwardedHeaders`). Actual
-  certificate provisioning (Kestrel cert or a fronting proxy/load balancer)
-  is an infrastructure decision outside this repo's app code.
-- Encryption at rest for the SQL Server data volume (e.g. disk/volume
-  encryption, or SQL Server TDE) is an infrastructure-level control, not
-  something the application code can enforce — flagged for the platform
-  owner.
-- Data Protection keys persist to a mounted volume (`/keys` via
-  `DataProtection__KeysPath`) so login sessions and tokens survive
-  container restarts; only takes effect when that env var is set (e.g. in
-  docker-compose).
+- Role enforcement (2026-09-19 human decision, implemented): Course/Employee
+  add/edit/delete require the "Admin" role; listing pages stay open to any
+  authenticated user.
+- Self-registration (2026-09-19 human decision, implemented): the Identity
+  Register page is overridden (`Areas/Identity/Pages/Account/Register.cshtml`)
+  to require an existing Admin — the RCL's default page is `[AllowAnonymous]`
+  and can't be locked down with an authorization convention alone, since
+  `AllowAnonymous` always wins. A bootstrap admin account is seeded from
+  `Bootstrap:AdminEmail`/`Bootstrap:AdminPassword` config to escape the
+  resulting chicken-and-egg problem on first run — rotate that password
+  immediately after first login.
+- TLS (2026-09-19 human decision): a reverse proxy/load balancer terminates
+  TLS in front of this container; the app trusts `X-Forwarded-*` headers
+  (`ForwardedHeadersOptions.KnownIPNetworks`/`KnownProxies` are cleared since
+  the proxy's address isn't known at build time — restrict them to the
+  actual proxy's network per environment for defense-in-depth).
+- Encryption at rest (2026-09-19, confirmed by human Engineering Lead):
+  already handled by infrastructure outside this app/repo.
 - CI pipeline wiring is out of scope for this agent (governance surface —
   `.github/workflows/**` and `bitbucket-pipelines.yml` are off-limits); a
   human/platform owner needs to add a workflow that runs `dotnet build`,

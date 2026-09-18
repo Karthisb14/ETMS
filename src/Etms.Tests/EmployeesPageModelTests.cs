@@ -44,7 +44,7 @@ public class EmployeesPageModelTests
         await db.SaveChangesAsync();
         var employeeId = db.Employees.Single().EmployeeId;
 
-        var indexModel = new IndexModel(db);
+        var indexModel = new IndexModel(db) { PageContext = TestPageContext.ForRole("Admin") };
         await indexModel.OnPostDeleteAsync(employeeId);
 
         Assert.Empty(await db.Employees.ToListAsync());

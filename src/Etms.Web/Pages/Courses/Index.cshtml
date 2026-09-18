@@ -6,9 +6,12 @@
 
 <h1>Courses</h1>
 
-<p>
-    <a asp-page="./Edit" class="btn btn-primary">Add course</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-page="./Edit" class="btn btn-primary">Add course</a>
+    </p>
+}
 
 @if (Model.Courses.Count == 0)
 {
@@ -33,11 +36,16 @@ else
                     <td>@course.Name</td>
                     <td>@course.Description</td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@course.CourseId">Edit</a> |
-                        <form method="post" asp-page-handler="Delete" asp-route-id="@course.CourseId" style="display:inline"
-                              onsubmit="return confirm('Are you sure you wish to delete this record?');">
-                            <button type="submit" class="btn btn-link p-0 align-baseline">Delete</button>
-                        </form>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <span>
+                                <a asp-page="./Edit" asp-route-id="@course.CourseId">Edit</a> |
+                                <form method="post" asp-page-handler="Delete" asp-route-id="@course.CourseId" style="display:inline"
+                                      onsubmit="return confirm('Are you sure you wish to delete this record?');">
+                                    <button type="submit" class="btn btn-link p-0 align-baseline">Delete</button>
+                                </form>
+                            </span>
+                        }
                     </td>
                 </tr>
             }

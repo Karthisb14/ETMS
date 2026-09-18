@@ -6,9 +6,12 @@
 
 <h1>Employees</h1>
 
-<p>
-    <a asp-page="./Edit" class="btn btn-primary">Add employee</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-page="./Edit" class="btn btn-primary">Add employee</a>
+    </p>
+}
 
 @if (Model.Employees.Count == 0)
 {
@@ -31,11 +34,16 @@ else
                     <td>@employee.Name</td>
                     <td>@employee.HireDate.ToShortDateString()</td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@employee.EmployeeId">Edit</a> |
-                        <form method="post" asp-page-handler="Delete" asp-route-id="@employee.EmployeeId" style="display:inline"
-                              onsubmit="return confirm('Are you sure you wish to delete this record?');">
-                            <button type="submit" class="btn btn-link p-0 align-baseline">Delete</button>
-                        </form>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <span>
+                                <a asp-page="./Edit" asp-route-id="@employee.EmployeeId">Edit</a> |
+                                <form method="post" asp-page-handler="Delete" asp-route-id="@employee.EmployeeId" style="display:inline"
+                                      onsubmit="return confirm('Are you sure you wish to delete this record?');">
+                                    <button type="submit" class="btn btn-link p-0 align-baseline">Delete</button>
+                                </form>
+                            </span>
+                        }
                     </td>
                 </tr>
             }

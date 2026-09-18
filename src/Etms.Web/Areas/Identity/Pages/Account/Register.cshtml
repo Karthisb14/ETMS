@@ -1,0 +1,41 @@
+@page
+@model Etms.Web.Areas.Identity.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register a new account";
+}
+
+<h1>@ViewData["Title"]</h1>
+<p class="text-muted">Admin-only: account creation is invite-only, not self-service.</p>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Input.Email" class="form-label"></label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Input.DisplayName" class="form-label"></label>
+        <input asp-for="Input.DisplayName" class="form-control" />
+        <span asp-validation-for="Input.DisplayName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Input.Password" class="form-label"></label>
+        <input asp-for="Input.Password" class="form-control" type="password" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="Input.IsAdmin" class="form-check-input" />
+        <label asp-for="Input.IsAdmin" class="form-check-label">Grant Admin role</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create account</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

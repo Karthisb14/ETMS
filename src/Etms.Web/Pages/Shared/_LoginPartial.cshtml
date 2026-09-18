@@ -5,6 +5,12 @@
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Create user</a>
+        </li>
+    }
     <li class="nav-item">
         <span class="nav-link text-dark">Hello @UserManager.GetUserName(User)!</span>
     </li>
@@ -16,9 +22,6 @@
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
     <li class="nav-item">
         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>

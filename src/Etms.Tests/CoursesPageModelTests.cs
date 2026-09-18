@@ -79,7 +79,7 @@ public class CoursesPageModelTests
         await db.SaveChangesAsync();
         var courseId = db.Courses.Single().CourseId;
 
-        var indexModel = new IndexModel(db);
+        var indexModel = new IndexModel(db) { PageContext = TestPageContext.ForRole("Admin") };
         await indexModel.OnPostDeleteAsync(courseId);
 
         Assert.Empty(await db.Courses.ToListAsync());

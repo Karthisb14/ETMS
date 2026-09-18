@@ -20,8 +20,15 @@ public class IndexModel : PageModel
     }
 
     // Preserves the legacy Employee_Delete business rule (App_Code/EmployeeData.vb).
+    // Delete is Admin-only; the page itself (listing) stays open to any authenticated
+    // user, so this is checked per-handler rather than with a page-level [Authorize].
     public async Task<IActionResult> OnPostDeleteAsync(int id)
     {
+        if (!User.IsInRole("Admin"))
+        {
+            return Forbid();
+        }
+
         var employee = await _db.Employees.FindAsync(id);
         if (employee is not null)
         {
