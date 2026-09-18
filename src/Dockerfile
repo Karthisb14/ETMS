@@ -17,6 +17,9 @@ WORKDIR /app
 
 # Run as a non-root user (OWASP: least privilege for the container process).
 RUN adduser --disabled-password --gecos "" etms
+# Pre-create the Data Protection keys mount point so the named volume inherits
+# non-root ownership on first creation (see docker-compose.yml DataProtection__KeysPath).
+RUN mkdir -p /keys && chown etms /keys
 USER etms
 
 COPY --from=build /app/publish .

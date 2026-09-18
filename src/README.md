@@ -52,9 +52,26 @@ legacy `Frog` database into the new schema. Run once during cutover
 - Self-registration via `AddDefaultIdentity` is enabled; whether account
   creation should instead be admin-provisioned/invite-only is a compliance
   hardening decision for KAN-12.
-- Audit logging (`Middleware/AuditLoggingExtensions.cs`) currently writes to
-  standard logging output; routing it to a durable, queryable audit store is
-  part of KAN-12.
+- Role-based least privilege is scaffolded (an "Admin" role is seeded at
+  startup) but **not enforced** on any page yet — the legacy app had no
+  role distinction either, and deciding who should hold "Admin" vs a
+  regular account is a policy call for the human Engineering Lead/PO, not
+  this agent.
+- Audit logging (`Middleware/AuditLoggingExtensions.cs`) now persists to
+  the `AuditLogEntry` table (durable, queryable) instead of just log
+  output.
+- TLS: this app enables `UseHttpsRedirection`/`UseHsts` and trusts
+  `X-Forwarded-*` headers from a reverse proxy (`ForwardedHeaders`). Actual
+  certificate provisioning (Kestrel cert or a fronting proxy/load balancer)
+  is an infrastructure decision outside this repo's app code.
+- Encryption at rest for the SQL Server data volume (e.g. disk/volume
+  encryption, or SQL Server TDE) is an infrastructure-level control, not
+  something the application code can enforce — flagged for the platform
+  owner.
+- Data Protection keys persist to a mounted volume (`/keys` via
+  `DataProtection__KeysPath`) so login sessions and tokens survive
+  container restarts; only takes effect when that env var is set (e.g. in
+  docker-compose).
 - CI pipeline wiring is out of scope for this agent (governance surface —
   `.github/workflows/**` and `bitbucket-pipelines.yml` are off-limits); a
   human/platform owner needs to add a workflow that runs `dotnet build`,

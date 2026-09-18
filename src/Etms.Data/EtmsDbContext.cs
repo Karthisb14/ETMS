@@ -13,10 +13,18 @@ public class EtmsDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Course> Courses => Set<Course>();
     public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<EmployeeCourse> EmployeeCourses => Set<EmployeeCourse>();
+    public DbSet<AuditLogEntry> AuditLogEntries => Set<AuditLogEntry>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        builder.Entity<AuditLogEntry>(entity =>
+        {
+            entity.ToTable("AuditLogEntry");
+            entity.HasKey(a => a.AuditLogEntryId);
+            entity.HasIndex(a => a.TimestampUtc);
+        });
 
         builder.Entity<Course>(entity =>
         {

@@ -23,9 +23,13 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: "Production"
       ConnectionStrings__Etms: Server=db,1433;Database=Etms;User Id=sa;Password=${ETMS_DB_PASSWORD};TrustServerCertificate=True
+      DataProtection__KeysPath: /keys
+    volumes:
+      - etms-dpkeys:/keys
     depends_on:
       db:
         condition: service_healthy
 
 volumes:
   etms-db-data:
+  etms-dpkeys:
