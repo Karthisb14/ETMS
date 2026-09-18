@@ -1,0 +1,10 @@
+workflow.definition: standard
+branching.strategy: trunk-based
+testing.coverage_threshold: 80
+ai.approved_models:
+- claude-opus
+- claude-sonnet-5
+ai.default_model: claude-sonnet-5
+ai.model_by_operation:
+  architecture_planning: claude-opus
+  development: claude-sonnet-5

@@ -1,0 +1,143 @@
+# The §9 lifecycle, shipped as the default workflow definition — not a
+# mandatory law. A project may replace this wholesale (D1); whichever
+# definition it uses is checked by `ai-dlc workflow check`, which proves
+# by reachability analysis that no path to COMPLETED can skip
+# quality_gates or security_gates.
+name: standard
+version: 1
+initial_state: IDEATION
+
+required_gates:
+  - quality_gates
+  - security_gates
+
+states:
+  - id: IDEATION
+  - id: DRAFT
+  - id: PO_REVIEW
+    produces: [requirements, nfr_spec]
+  - id: PO_APPROVED
+  - id: ENGINEERING_REVIEW
+  - id: DESIGN
+  - id: TECHNICAL_PLANNING
+    produces: [architecture, tech_design, jira_story, jira_task]
+    fan_out: task
+  - id: ENGINEERING_APPROVED
+  - id: READY_FOR_DEVELOPMENT
+  - id: IN_PROGRESS
+  - id: VALIDATION
+  - id: CODE_REVIEW
+  - id: QA
+    produces: [qa_report]
+  - id: ACCEPTANCE
+  - id: DOCUMENTATION
+    produces: [user_manual]
+  - id: COMPLETED
+    type: terminal_success
+  - id: REJECTED
+    type: terminal_failure
+  - id: FAILED
+    type: terminal_failure
+  - id: BLOCKED
+    type: terminal_failure
+
+transitions:
+  - from: IDEATION
+    to: DRAFT
+    "on": draft_created
+
+  - from: DRAFT
+    to: PO_REVIEW
+    "on": submit_for_po_review
+
+  - from: PO_REVIEW
+    to: PO_APPROVED
+    "on": po_approve
+    approval: { role: product_owner }
+    requires: [requirements, nfr_spec]
+
+  - from: PO_REVIEW
+    to: REJECTED
+    "on": po_reject
+
+  - from: PO_APPROVED
+    to: ENGINEERING_REVIEW
+    "on": start_engineering_review
+
+  - from: ENGINEERING_REVIEW
+    to: DESIGN
+    "on": begin_design
+
+  - from: DESIGN
+    to: TECHNICAL_PLANNING
+    "on": begin_technical_planning
+
+  - from: TECHNICAL_PLANNING
+    to: ENGINEERING_APPROVED
+    "on": eng_approve
+    approval: { role: engineering_lead }
+
+  - from: TECHNICAL_PLANNING
+    to: REJECTED
+    "on": eng_reject
+
+  - from: ENGINEERING_APPROVED
+    to: READY_FOR_DEVELOPMENT
+    "on": ready
+
+  - from: READY_FOR_DEVELOPMENT
+    to: IN_PROGRESS
+    "on": start_development
+    requires: [architecture, tech_design, jira_story, jira_task]
+
+  # Every route to COMPLETED must cross this edge — quality_gates
+  - from: IN_PROGRESS
+    to: VALIDATION
+    "on": dev_complete
+    gate: { name: quality_gates }
+
+  - from: IN_PROGRESS
+    to: BLOCKED
+    "on": block
+
+  - from: VALIDATION
+    to: CODE_REVIEW
+    "on": validation_pass
+
+  - from: VALIDATION
+    to: IN_PROGRESS
+    "on": validation_fail
+
+  # Every route to COMPLETED must cross this edge — security_gates
+  - from: CODE_REVIEW
+    to: QA
+    "on": review_pass
+    gate: { name: security_gates }
+    requires: [requirements, nfr_spec, tech_design]
+
+  - from: CODE_REVIEW
+    to: IN_PROGRESS
+    "on": request_changes
+
+  - from: QA
+    to: ACCEPTANCE
+    "on": qa_pass
+    requires: [qa_report]
+
+  - from: QA
+    to: IN_PROGRESS
+    "on": qa_fail
+
+  - from: ACCEPTANCE
+    to: DOCUMENTATION
+    "on": accept
+    approval: { role: business_owner }
+
+  - from: ACCEPTANCE
+    to: REJECTED
+    "on": reject_acceptance
+
+  - from: DOCUMENTATION
+    to: COMPLETED
+    "on": docs_complete
+    requires: [user_manual]

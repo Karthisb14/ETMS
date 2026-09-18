@@ -1,0 +1,326 @@
+{
+  "aidlc/agents/developer/agent.yaml": {
+    "mtime": 1789757984.6591327,
+    "seen": 1789757984.9779909,
+    "ast_hash": "fcb32335f8dfca11eb7598adbee96bbe",
+    "semantic_hash": ""
+  },
+  "aidlc/agents/documentation/agent.yaml": {
+    "mtime": 1789757984.6614823,
+    "seen": 1789757984.977993,
+    "ast_hash": "479a0e87eff8697e39ef83fe264a5025",
+    "semantic_hash": ""
+  },
+  "aidlc/agents/engineering-lead/agent.yaml": {
+    "mtime": 1789757984.6582048,
+    "seen": 1789757984.977994,
+    "ast_hash": "74f0d0c62c61ab5b2456ddcc474ce457",
+    "semantic_hash": ""
+  },
+  "aidlc/agents/onboarding/agent.yaml": {
+    "mtime": 1789757984.6620705,
+    "seen": 1789757984.977995,
+    "ast_hash": "0f2393872e5d44deb1dc82e0f5330b26",
+    "semantic_hash": ""
+  },
+  "aidlc/agents/po/agent.yaml": {
+    "mtime": 1789757984.6569202,
+    "seen": 1789757984.977996,
+    "ast_hash": "e3bc5ba0251ec4af4f81a3a7755ab7f3",
+    "semantic_hash": ""
+  },
+  "aidlc/agents/qa/agent.yaml": {
+    "mtime": 1789757984.6600473,
+    "seen": 1789757984.977996,
+    "ast_hash": "34cad09959dbe1d0aba12809bca0cc68",
+    "semantic_hash": ""
+  },
+  "aidlc/agents/review/agent.yaml": {
+    "mtime": 1789757984.6607091,
+    "seen": 1789757984.977997,
+    "ast_hash": "423b619e485b8a8d98dfc6cf001851ee",
+    "semantic_hash": ""
+  },
+  "aidlc/context/project-context.md": {
+    "mtime": 1789757984.6650782,
+    "seen": 1789757984.977997,
+    "ast_hash": "e4a985a8d8bbdea44eec0f0bffc6ae25",
+    "semantic_hash": ""
+  },
+  "aidlc/manifest.yml": {
+    "mtime": 1789757984.6542099,
+    "seen": 1789757984.977998,
+    "ast_hash": "599bd402b3c658ee71227f1b401eeed6",
+    "semantic_hash": ""
+  },
+  "aidlc/standards/project/policy.yaml": {
+    "mtime": 1789757984.6551754,
+    "seen": 1789757984.977998,
+    "ast_hash": "e8fa397f47417071d7385f37e1042086",
+    "semantic_hash": ""
+  },
+  "aidlc/templates/architecture.md": {
+    "mtime": 1789757984.663945,
+    "seen": 1789757984.9779992,
+    "ast_hash": "7eae97de39d5eb481af468c34f3cd226",
+    "semantic_hash": ""
+  },
+  "aidlc/templates/prd.md": {
+    "mtime": 1789757984.6641848,
+    "seen": 1789757984.978,
+    "ast_hash": "e85d36e4931d36633187b9da3000f225",
+    "semantic_hash": ""
+  },
+  "aidlc/templates/technical-design.md": {
+    "mtime": 1789757984.6647966,
+    "seen": 1789757984.978,
+    "ast_hash": "49baee8f177008bcb99ee5bda7b9e6b9",
+    "semantic_hash": ""
+  },
+  "aidlc/workflows/standard.yaml": {
+    "mtime": 1789757984.663038,
+    "seen": 1789757984.9780009,
+    "ast_hash": "3c6888637b7036460ae78c8dafae9752",
+    "semantic_hash": ""
+  },
+  "aidlc/workflows/task.yaml": {
+    "mtime": 1789757984.6633618,
+    "seen": 1789757984.9780009,
+    "ast_hash": "fefc945d86f8d78e11e86dd075d6aec4",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Forg_r1_c1.jpg": {
+    "mtime": 1789751922.059197,
+    "seen": 1789757984.9780018,
+    "ast_hash": "69c2beaaf14cd206099fc179ec7b70e6",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Forg_r3_c1.jpg": {
+    "mtime": 1789751922.059513,
+    "seen": 1789757984.9780018,
+    "ast_hash": "22020506ac6a2b4e8177144b135d7adb",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Forg_r5_c1.jpg": {
+    "mtime": 1789751922.059949,
+    "seen": 1789757984.978003,
+    "ast_hash": "3b1e776b6ea698d9d342d167246b19c4",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/bgM1.jpg": {
+    "mtime": 1789751922.06059,
+    "seen": 1789757984.978003,
+    "ast_hash": "4c3df37c0d5bc4aecaa36faa23185a04",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/first.gif": {
+    "mtime": 1789751922.0609896,
+    "seen": 1789757984.978004,
+    "ast_hash": "514df216748e7d478deaaa16038b2635",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/footer-bg.png": {
+    "mtime": 1789751922.0613246,
+    "seen": 1789757984.978004,
+    "ast_hash": "616d1d23ed17f5f61819ad0fc7fc62ad",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/footer.gif": {
+    "mtime": 1789751922.0617259,
+    "seen": 1789757984.978005,
+    "ast_hash": "095f1e14ad113cfd9d82fe9d6b8a2a93",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/header-bg.png": {
+    "mtime": 1789751922.0621452,
+    "seen": 1789757984.978005,
+    "ast_hash": "e248195c77ba16bbcb3e4220e7a54dbf",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/last.gif": {
+    "mtime": 1789751922.0624433,
+    "seen": 1789757984.9780061,
+    "ast_hash": "792b2d645de5c78c35bc0ee8d579ed52",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/minus.gif": {
+    "mtime": 1789751922.0627353,
+    "seen": 1789757984.9780061,
+    "ast_hash": "d1bd078948a14b0ca54ab6f69bac2f6c",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/next.gif": {
+    "mtime": 1789751922.0631065,
+    "seen": 1789757984.978007,
+    "ast_hash": "06c258bdd9949c276adfb245056ed310",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/plus.gif": {
+    "mtime": 1789751922.0633907,
+    "seen": 1789757984.978007,
+    "ast_hash": "ab41f0b2d958f769fa4d840176bf0422",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/prev.gif": {
+    "mtime": 1789751922.0637538,
+    "seen": 1789757984.978008,
+    "ast_hash": "86e10fefe4db75e17f1a20f93a4a00cc",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/sort_asc.gif": {
+    "mtime": 1789751922.0641787,
+    "seen": 1789757984.978008,
+    "ast_hash": "f1ea34fd02943a30a7f9d0ee39ca57e0",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/sort_desc.gif": {
+    "mtime": 1789751922.0650685,
+    "seen": 1789757984.978009,
+    "ast_hash": "ecc05fbab7082da6b6534dd70706f679",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/tb_bg.gif": {
+    "mtime": 1789751922.0653381,
+    "seen": 1789757984.978009,
+    "ast_hash": "f4f3d943a45b6b82418233632cea5de2",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/Img_lv_vista/title-bg.png": {
+    "mtime": 1789751922.0659938,
+    "seen": 1789757984.9780102,
+    "ast_hash": "2247f5475e9b38f18b71b437fea8054a",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/TabBG.png": {
+    "mtime": 1789751922.0668597,
+    "seen": 1789757984.9780102,
+    "ast_hash": "6962e30dbc60542fe9c0d4f7e9fe3261",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/bgM1.jpg": {
+    "mtime": 1789751922.0671701,
+    "seen": 1789757984.978011,
+    "ast_hash": "4c3df37c0d5bc4aecaa36faa23185a04",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/bgM2.jpg": {
+    "mtime": 1789751922.0674646,
+    "seen": 1789757984.978011,
+    "ast_hash": "979ac66d3ea358f5ec8e5748a3d2a6d9",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/btn.gif": {
+    "mtime": 1789751922.067733,
+    "seen": 1789757984.9780118,
+    "ast_hash": "020ab472626faba4ebed711cdd19b9b4",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/btnBG.jpg": {
+    "mtime": 1789751922.0679662,
+    "seen": 1789757984.9780118,
+    "ast_hash": "de55c826021d2f4f00586f1d6010eb3f",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/btn_blue.jpg": {
+    "mtime": 1789751922.068275,
+    "seen": 1789757984.978013,
+    "ast_hash": "290fbc9c5d14e058c7a5a257361fbdd8",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/btn_orange.gif": {
+    "mtime": 1789751922.0685964,
+    "seen": 1789757984.978013,
+    "ast_hash": "e0aab87558af10f27c87e0bd31f683a0",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/mainBG.jpg": {
+    "mtime": 1789751922.0692906,
+    "seen": 1789757984.978014,
+    "ast_hash": "10f1914d601f95c204364ee1a32e3d08",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/mainBG1.jpg": {
+    "mtime": 1789751922.0697117,
+    "seen": 1789757984.978015,
+    "ast_hash": "3289417f55be9cd2c0c638a2b20ba217",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/spacer.gif": {
+    "mtime": 1789751922.07009,
+    "seen": 1789757984.978015,
+    "ast_hash": "221d8352905f2c38b3cb2bd191d630b0",
+    "semantic_hash": ""
+  },
+  "App_Themes/Frog/sprite.png": {
+    "mtime": 1789751922.0703409,
+    "seen": 1789757984.978016,
+    "ast_hash": "4ea9c76ddccae0835ba727ee902809f3",
+    "semantic_hash": ""
+  },
+  "Img/arrow3.gif": {
+    "mtime": 1789751922.0784447,
+    "seen": 1789757984.978018,
+    "ast_hash": "fc12c158521136fb7c84ac9e9b4c16e7",
+    "semantic_hash": ""
+  },
+  "Img/bgM2.jpg": {
+    "mtime": 1789751922.0786657,
+    "seen": 1789757984.978018,
+    "ast_hash": "979ac66d3ea358f5ec8e5748a3d2a6d9",
+    "semantic_hash": ""
+  },
+  "Img/cal.gif": {
+    "mtime": 1789751922.0789092,
+    "seen": 1789757984.978019,
+    "ast_hash": "e05d8b00f8595743d3326c92cd6f2365",
+    "semantic_hash": ""
+  },
+  "Img/calendar.gif": {
+    "mtime": 1789751922.0792286,
+    "seen": 1789757984.978019,
+    "ast_hash": "2da9902caf5947f831e0632fa6fe066d",
+    "semantic_hash": ""
+  },
+  "Img/collapse.gif": {
+    "mtime": 1789751922.0794482,
+    "seen": 1789757984.9780202,
+    "ast_hash": "f1ea34fd02943a30a7f9d0ee39ca57e0",
+    "semantic_hash": ""
+  },
+  "Img/expand.gif": {
+    "mtime": 1789751922.0796633,
+    "seen": 1789757984.9780202,
+    "ast_hash": "ecc05fbab7082da6b6534dd70706f679",
+    "semantic_hash": ""
+  },
+  "Img/mainBG.jpg": {
+    "mtime": 1789751922.0799513,
+    "seen": 1789757984.9780211,
+    "ast_hash": "3289417f55be9cd2c0c638a2b20ba217",
+    "semantic_hash": ""
+  },
+  "Img/no.gif": {
+    "mtime": 1789751922.080705,
+    "seen": 1789757984.9780211,
+    "ast_hash": "b6944e50e07a2b9b97758fc210460fa5",
+    "semantic_hash": ""
+  },
+  "Img/no2.gif": {
+    "mtime": 1789751922.0809345,
+    "seen": 1789757984.9780219,
+    "ast_hash": "33230d3fb1503e66855563568945258a",
+    "semantic_hash": ""
+  },
+  "Img/spacer.gif": {
+    "mtime": 1789751922.0811799,
+    "seen": 1789757984.9780219,
+    "ast_hash": "221d8352905f2c38b3cb2bd191d630b0",
+    "semantic_hash": ""
+  },
+  "Img/yes.gif": {
+    "mtime": 1789751922.0814342,
+    "seen": 1789757984.9780228,
+    "ast_hash": "eedc71d77c3ab12c2f76e552e7e65b70",
+    "semantic_hash": ""
+  }
+}

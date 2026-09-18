@@ -1,0 +1,225 @@
+{
+  "fields": {
+    "ai.approved_harnesses": {
+      "history": [],
+      "op": "subset",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "ai.approved_models": {
+      "history": [
+        [
+          "project",
+          [
+            "claude-opus",
+            "claude-sonnet-5"
+          ]
+        ]
+      ],
+      "op": "subset",
+      "set_by_level": "project",
+      "value": [
+        "claude-opus",
+        "claude-sonnet-5"
+      ],
+      "via_exception": null
+    },
+    "ai.default_model": {
+      "history": [
+        [
+          "project",
+          "claude-sonnet-5"
+        ]
+      ],
+      "op": "override",
+      "set_by_level": "project",
+      "value": "claude-sonnet-5",
+      "via_exception": null
+    },
+    "ai.model_by_operation": {
+      "history": [
+        [
+          "project",
+          {
+            "architecture_planning": "claude-opus",
+            "development": "claude-sonnet-5"
+          }
+        ]
+      ],
+      "op": "override",
+      "set_by_level": "project",
+      "value": {
+        "architecture_planning": "claude-opus",
+        "development": "claude-sonnet-5"
+      },
+      "via_exception": null
+    },
+    "audit.retention_days": {
+      "history": [],
+      "op": "fixed",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "autonomy.max_context_tokens": {
+      "history": [],
+      "op": "max",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "autonomy.max_files_changed": {
+      "history": [],
+      "op": "max",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "branching.strategy": {
+      "history": [
+        [
+          "project",
+          "trunk-based"
+        ]
+      ],
+      "op": "override",
+      "set_by_level": "project",
+      "value": "trunk-based",
+      "via_exception": null
+    },
+    "build.commands": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "build.format_commands": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "build.lint_commands": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "build.test_commands": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "integration.confluence_base_url": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "integration.confluence_space_key": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "integration.jira_base_url": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "integration.jira_project_key": {
+      "history": [],
+      "op": "override",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "quality.require_verified_approvals": {
+      "history": [],
+      "op": "fixed",
+      "set_by_level": "(unset)",
+      "value": false,
+      "via_exception": null
+    },
+    "quality.required_approval_roles": {
+      "history": [],
+      "op": "superset",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "quality.required_gates": {
+      "history": [],
+      "op": "superset",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "review.min_approvers": {
+      "history": [],
+      "op": "min",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "security.data_residency": {
+      "history": [],
+      "op": "fixed",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "security.lint_rules": {
+      "history": [],
+      "op": "tighten",
+      "set_by_level": "(unset)",
+      "value": [],
+      "via_exception": null
+    },
+    "security.pii_action": {
+      "history": [],
+      "op": "fixed",
+      "set_by_level": "(unset)",
+      "value": null,
+      "via_exception": null
+    },
+    "testing.coverage_threshold": {
+      "history": [
+        [
+          "project",
+          80
+        ]
+      ],
+      "op": "min",
+      "set_by_level": "project",
+      "value": 80,
+      "via_exception": null
+    },
+    "workflow.definition": {
+      "history": [
+        [
+          "project",
+          "standard"
+        ]
+      ],
+      "op": "override",
+      "set_by_level": "project",
+      "value": "standard",
+      "via_exception": null
+    }
+  },
+  "level_digests": {
+    "project": "b8dcf4d97d5560c445ec2a474a575fea37d427747b5b752f973f721c0b4b3703"
+  },
+  "project": "etms"
+}

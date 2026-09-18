@@ -1,0 +1,17 @@
+{
+  "servers": {
+    "ai-dlc": {
+      "args": [
+        "mcp",
+        "serve",
+        "--project",
+        "."
+      ],
+      "command": "ai-dlc"
+    },
+    "atlassian-mcp": {
+      "type": "http",
+      "url": "https://karthikeyanvjkk.atlassian.net/wiki/spaces/KAN/overview"
+    }
+  }
+}

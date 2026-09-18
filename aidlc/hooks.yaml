@@ -1,0 +1,5 @@
+profile: full
+format_check_commands: []
+lint_commands: []
+security_commands: []
+graphify: required

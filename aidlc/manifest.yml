@@ -1,0 +1,48 @@
+project: etms
+policy_paths:
+  project: aidlc/standards/project/policy.yaml
+events_dir: .ai-dlc/events
+graphify_mcp:
+  server_id: graphify
+  transport: stdio
+  command: graphify
+  args:
+  - .
+  - --mcp
+  query_tool: query
+  timeout_seconds: 60
+  allowed_project_root: null
+  trust_mode: read_only
+atlassian_mcp:
+  server_id: atlassian-mcp
+  url: https://karthikeyanvjkk.atlassian.net/wiki/spaces/KAN/overview
+  auth_mode: oauth
+  token_kind: null
+  credential_env: null
+agent_routing:
+  operation_to_agent:
+    onboarding: onboarding
+    requirements: po
+    architecture_planning: engineering-lead
+    development: developer
+    validation: qa
+    qa: qa
+    review: review
+    documentation: documentation
+  state_to_agent:
+    IDEATION: po
+    DRAFT: po
+    PO_REVIEW: po
+    PO_APPROVED: engineering-lead
+    ENGINEERING_REVIEW: engineering-lead
+    DESIGN: engineering-lead
+    TECHNICAL_PLANNING: engineering-lead
+    ENGINEERING_APPROVED: engineering-lead
+    READY_FOR_DEVELOPMENT: developer
+    IN_PROGRESS: developer
+    VALIDATION: qa
+    CODE_REVIEW: review
+    QA: qa
+    ACCEPTANCE: po
+    DOCUMENTATION: documentation
+repository_url: null

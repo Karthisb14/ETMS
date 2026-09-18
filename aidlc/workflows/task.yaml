@@ -1,0 +1,39 @@
+# Minimal task-level definition — a state machine an epic's IN_PROGRESS
+# state fans out into per D1's parallel-work diagram. One instance per
+# task; the epic's join transition waits for every fanned-out task
+# instance to reach DONE.
+name: task
+version: 1
+initial_state: READY
+
+required_gates: []
+
+states:
+  - id: READY
+  - id: DEV
+  - id: REVIEW
+  - id: DONE
+    type: terminal_success
+  - id: ABANDONED
+    type: terminal_failure
+
+transitions:
+  - from: READY
+    to: DEV
+    "on": pick_up
+
+  - from: DEV
+    to: REVIEW
+    "on": submit_for_review
+
+  - from: REVIEW
+    to: DEV
+    "on": changes_requested
+
+  - from: REVIEW
+    to: DONE
+    "on": approve
+
+  - from: READY
+    to: ABANDONED
+    "on": abandon
