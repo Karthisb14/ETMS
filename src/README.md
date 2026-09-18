@@ -45,7 +45,9 @@ dotnet test Etms.Tests/Etms.Tests.csproj
 
 `DataMigration/migrate-legacy-data.sql` copies existing rows from the
 legacy `Frog` database into the new schema. Run once during cutover
-(KAN-11), after migrations have created the new schema.
+(KAN-11), after migrations have created the new schema. See
+`DataMigration/cutover-runbook.md` for the full parallel-run, cutover, and
+rollback plan (KAN-11 / KAN-10 acceptance criterion 5).
 
 ## Open items (tracked in Jira, not silently decided here)
 
