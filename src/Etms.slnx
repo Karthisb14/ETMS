@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Etms.Data/Etms.Data.csproj" />
+  <Project Path="Etms.Domain/Etms.Domain.csproj" />
+  <Project Path="Etms.Tests/Etms.Tests.csproj" />
+  <Project Path="Etms.Web/Etms.Web.csproj" />
+</Solution>

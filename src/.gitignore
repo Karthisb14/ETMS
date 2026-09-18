@@ -1,0 +1,7 @@
+bin/
+obj/
+*.user
+.vs/
+.env
+appsettings.*.local.json
+Etms.Web/wwwroot/favicon.ico

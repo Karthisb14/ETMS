@@ -1,0 +1,67 @@
+@page "{id:int?}"
+@model Etms.Web.Pages.Employees.EditModel
+@{
+    ViewData["Title"] = Model.Employee.EmployeeId == 0 ? "Add employee" : "Edit employee";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Employee.EmployeeId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Employee.Name" class="form-label"></label>
+        <input asp-for="Employee.Name" class="form-control" />
+        <span asp-validation-for="Employee.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Employee.HireDate" class="form-label"></label>
+        <input asp-for="Employee.HireDate" class="form-control" type="date" />
+        <span asp-validation-for="Employee.HireDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@if (Model.Employee.EmployeeId != 0)
+{
+    <hr />
+    <h2>Course assignments</h2>
+
+    @* Replaces the legacy EmployeeCourse.ascx control embedded in EmployeeAdmin.aspx. *@
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Passed</th>
+                <th>Note</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in Model.Assignments)
+            {
+                <tr>
+                    <td>@assignment.CourseLabel</td>
+                    <td>@(assignment.IsPass ? "Yes" : "No")</td>
+                    <td>@assignment.Note</td>
+                    <td>
+                        <a asp-page="./AssignCourse" asp-route-employeeId="@Model.Employee.EmployeeId"
+                           asp-route-employeeCourseId="@assignment.EmployeeCourseId">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-page="./AssignCourse" asp-route-employeeId="@Model.Employee.EmployeeId" class="btn btn-primary">
+        Assign course
+    </a>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
