@@ -70,12 +70,16 @@ builder.Services
     .AddEntityFrameworkStores<EtmsDbContext>();
 
 // Secure cookie flags (OWASP A02/A07): HttpOnly (already Identity default), Secure,
-// and strict SameSite to reduce CSRF/session-hijacking exposure.
+// and strict SameSite to reduce CSRF/session-hijacking exposure. Short sliding
+// expiration is HIPAA's "automatic logoff" technical safeguard — the legacy app had
+// no session concept at all, so there was no equivalent before.
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     options.Cookie.SameSite = SameSiteMode.Strict;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    options.SlidingExpiration = true;
 });
 
 // Every page requires an authenticated user by default — the legacy app had no
